@@ -8,6 +8,7 @@ from langchain.schema import messages_from_dict, messages_to_dict
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from langchain.memory import ChatMessageHistory
 import logging
+import yinglish
 
 class Waifu():
     '''CyberWaifu'''
@@ -119,6 +120,7 @@ class Waifu():
             self.cut_memory()
         logging.debug(f'LLM query')
         reply = self.brain.think(messages)
+        reply = yinglish.chs2yin(reply)
 
         history = []
         for message in self.chat_memory.messages:
